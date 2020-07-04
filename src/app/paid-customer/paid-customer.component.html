@@ -1,0 +1,194 @@
+<div class="container" style="background-color: #51d69e !important;">
+  <div class="p-1 text-center">
+    <h3>TANGEDCO</h3>
+    <p>FLY ASH FLEET MANAGEMENT</p>
+  </div>
+</div>
+<div class="container" style="font-size: 12px;margin-top: 20px">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Customer Details</h5>
+            </div>
+            <div class="col-4">
+              <div class="md-1 p-1">Name of Company</div>
+              <div class="md-1 p-1">Company Address </div>
+              <div class="md-1 p-1">GST NUmber </div>
+              <div class="md-1 p-1">Contact NUmber </div>
+              <div class="md-1 p-1">Email Id </div>
+            </div>
+            <div class="col-8">
+              <div class="md-1 p-1">Kingsly</div>
+              <div class="md-1 p-1" style="white-space: normal;"> xxx,xxxyyyy,zzzzzxxxxyyyy,tyyyy,3456778877</div>
+              <div class="md-1 p-1">67688787787868686868 </div>
+              <div class="md-1 p-1">+91 7897778907 </div>
+              <div class="md-1 p-1">
+                mranjith2016@gmail.com </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Sale Order Details</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <form>
+                <div class="row">
+                  <label for="username" class="col-8">Present Sale Order NUmber</label>
+                  <div class="col-4">
+                    XXX0220
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="name" class="col-8">Sale order Qty for 2 years</label>
+                  <div class="col-4"> 10000 MT
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="lastname" class="col-8">Price/Unit</label>
+                  <div class="col-4"> Rs.20,000.00
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="text" class="col-8">Amount availble for the month</label>
+                  <div class="col-4">
+                    1,000.00 </div>
+                </div>
+                <div class="row">
+                  <label for="select" class="col-8">Eligibility Qty as per the amount</label>
+                  <div class="col-4">
+                    50.00 MT
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="email" class="col-8">Fly ash lifted so far</label>
+                  <div class="col-4">
+                    100 MT
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="website" class="col-8">Remaining Qty to be lifted</label>
+                  <div class="col-4">
+                    900 MT
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Previous Booking Details</h5>
+            </div>
+            <form (ngSubmit)="onInvoicePrevMonth()" #heroForm="ngForm">
+              <div class="form-group inline">
+                <input type="text" class="form-control" id="name" required placeholder="Booking number"
+                  [(ngModel)]="model.name" name="name" #name="ngModel">
+
+                <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                  Booking number is required
+                </div>
+              </div>
+
+              <div class="form-group inline">
+                <input type="text" placeholder="Booking date" class="form-control" bsDatepicker>
+              </div>
+              <div class="form-group inline">
+                <input type="text" placeholder="Lifting date" class="form-control" bsDatepicker>
+              </div>
+              <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Invoice Download</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="col-md-12 shadow-lg p-1 mb-1 mt-1 bg-white rounded text-center">
+        <button class="btn btn-lg btn-outline-success" (click)="open(loginModal)">New Pickup</button>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Monthly Reports as per lifted Qty</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <form>
+                <div class="col-xs-12 col-12 col-md-12 form-group">
+                  <input [(ngModel)]="monthReport" autocomplete="off" class="form-control" name="date" bsDatepicker
+                    placeholder="select month to report" [bsConfig]="{dateInputFormat: 'MM/YYYY'}"
+                    (onShown)="onOpenCalendar($event)">
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-lg btn-outline-success">Get Report</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loginModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Booking Fly Ash</h5>
+  </div>
+<div class="modal-body">
+  <!-- <form>
+    <div class="form-group">
+      <label for="dateOfBirth">MOBILE NO</label>
+      <div class="input-group">
+        <input id="mobilenumber" class="form-control" placeholder="Please enter registered mobile number" name="mobilenumber">
+      </div>
+      <div class="input-group m-5 p-2">
+      <button type="button" class="btn btn-outline-success" (click)="generateOTP();">GENERATE OTP</button>
+      </div>
+    </div>
+  </form> -->
+  <form (ngSubmit)="onInvoicePrevMonth()" #bookingForm="ngForm">
+    <div class="form-group inline">
+      <input type="text" placeholder="Booking date" class="form-control" bsDatepicker>
+    </div>
+    <div class="row"> 
+    <div class="col-md-6 form-group inline"> 
+      <label for="mytime">Time Slot From</label>
+       <timepicker [(ngModel)]="mytime"  id="mytime"  name="mytime" #mytim="ngModel"> </timepicker>
+    </div>
+    <div class="col-md-6 form-group inline"> 
+      <label for="mytime">Time Slot To</label>
+       <timepicker [(ngModel)]="mytime"  id="mytime"  name="mytime" #mytim="ngModel"> </timepicker>
+    </div>
+  </div>
+    <div class="form-group inline">
+      <input type="text" placeholder="Quantity" class="form-control">
+    </div>
+
+    
+    <div class="form-group inline">
+      <input disabled type="text" placeholder="Qty availble for the slot" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!bookingForm.form.valid">Book</button>
+    <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Cancel</button>
+  </form>
+</div>
+</ng-template>

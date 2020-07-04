@@ -1,0 +1,130 @@
+<nav class="navbar navbar-expand-lg py-3 navbar-dark shadow-sm" style="background-color: #51d69e !important;">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <img src="https://res.cloudinary.com/mhmd/image/upload/v1557368579/logo_iqjuay.png" width="45" alt=""
+        class="d-inline-block align-middle mr-2">
+      <span class="text-uppercase font-weight-bold">Company</span>
+    </a>
+
+    <div class="p-3">
+      <h3>TANGEDCO</h3>
+      <p>FLY ASH FLEET MANAGEMENT</p>
+    </div>
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <a href="#" class="navbar-brand">
+          <img src="https://res.cloudinary.com/mhmd/image/upload/v1557368579/logo_iqjuay.png" width="45" alt=""
+            class="d-inline-block align-middle mr-2">
+          <span class="text-uppercase font-weight-bold">Company</span>
+        </a>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <p class="text-center m-2">{{currentDate | date:'fullDate'}}</p>
+  <div class="shadow table-responsive-xl">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">S.NO</th>
+          <th scope="col">Plants</th>
+          <th scope="col">Fly Ash Available Qty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let plant of plants; let i=index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{plant.name}}</td>
+          <td>{{plant.qty}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h4 class="text-center">LOGIN</h4>
+  <div class="row shadow p-3 m-3">
+    <div class="col-sm">
+      Paid Customers
+      <button type="button" (click)="open(loginModal,'paid')" class="btn btn-lg btn-outline-success">Login</button>
+    </div>
+    <div class="col-sm">
+      Free Customer(SSI)
+      <button type="button" (click)="open(loginModal,'free')" class="btn btn-lg btn-outline-success">Login</button>
+    </div>
+    <div class="col-sm">
+      Admin Login
+      <button type="button" (click)="open(loginModal,'admin')" class="btn btn-lg btn-outline-success">Login</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<ng-template #loginModal let-modal>
+  <div *ngIf="!isOTPGenerated" class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">LOGIN</h5>
+  </div>
+  <div *ngIf="isOTPGenerated" class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">REGISTER</h5>
+  </div>
+  <div class="modal-body">
+    <form *ngIf="!isOTPGenerated" (ngSubmit)="loginUser()" autocomplete="on">
+
+      <div class="form-group">
+        <label for="dateOfBirth">EMAIL</label>
+        <div class="input-group">
+          <input id="email" type="email" [(ngModel)]="userModel.email" class="form-control"
+            placeholder="Please enter registered email" name="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dateOfBirth">PASSWORD</label>
+        <div class="input-group">
+          <input id="password" type="password" [(ngModel)]="userModel.password" class="form-control"
+            placeholder="Please enter password" name="password">
+        </div>
+      </div>
+      <div class="input-group">
+        <button type="submit" class="btn btn-outline-success">Login</button>
+      </div>
+      <p *ngIf="userType != 'admin'"> Still you not have an account. Please <a [routerLink]="" (click)="isRegister()">Click to Register</a> </p>
+
+    </form>
+    <form *ngIf="isOTPGenerated" (ngSubmit)="registerPaidUser()" #registerForm="ngForm">
+      <div class="form-group">
+        <label for="dateOfBirth">USERNAME</label>
+        <div class="input-group">
+          <input id="username" type="text" [(ngModel)]="userModel.userName" class="form-control"
+            placeholder="Please enter username" name="userName">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dateOfBirth">EMAIL</label>
+        <div class="input-group">
+          <input id="email" type="email" [(ngModel)]="userModel.email" class="form-control"
+            placeholder="Please enter email" name="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dateOfBirth">MOBILE NUMBER</label>
+        <div class="input-group">
+          <input id="phone" type="text" [(ngModel)]="userModel.phone" class="form-control"
+            placeholder="Please enter mobile number" name="phone">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dateOfBirth">PASSWORD</label>
+        <div class="input-group">
+          <input id="password" type="password" [(ngModel)]="userModel.password" class="form-control"
+            placeholder="Please enter password" name="password">
+        </div>
+      </div>
+      <div class="input-group">
+        <button type="submit" class="btn btn-outline-success">Register</button>
+      </div>
+      <p> Already have an account. Please <a [routerLink]="" (click)="isLogin()">Click to Login</a> </p>
+
+    </form>
+  </div>
+</ng-template>
