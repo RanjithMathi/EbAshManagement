@@ -32,6 +32,7 @@
     "ngx-captcha": "^8.0.1",
     "ngx-clipboard": "11.1.9",
     "ngx-toastr": "^9.1.2",
+    "node-sass": "^4.14.1",
     "nouislider": "13.1.1",
     "rxjs": "6.4.0",
     "zone.js": "0.8.29"
