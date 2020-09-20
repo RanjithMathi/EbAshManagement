@@ -6,6 +6,42 @@
 </div>
 <div class="container" style="font-size: 12px;margin-top: 20px">
   <div class="row">
+    <h5>Availability</h5>
+    <div class="col-md-12"> 
+
+      <div class="col-xs-12 col-12 col-md-12 form-group">
+        <input [(ngModel)]="avail.plant" autocomplete="off" class="form-control" name="plant" 
+          placeholder="Plants "  #plant="ngModel">
+      </div>
+
+      <div class="col-xs-12 col-12 col-md-12 form-group">
+        <input [(ngModel)]="avail.qty" autocomplete="off" class="form-control" name="qty" 
+          placeholder="Avaiabe ashquantity" #qty="ngModel">
+      </div>
+
+      <div class="col-md-12">
+          <button class="btn btn-outline-success" (click)="addAvail()" type="submit">Add</button>
+      </div>
+
+      <h5> Availability table</h5>
+      <table class="table table-striped"> 
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Plant</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let availDatas of availdata; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{availDatas.plant}} </td>
+            <td> {{availDatas.qty}} </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
     <div class="col-md-5">
       <div class="card">
         <div class="card-body">
@@ -53,37 +89,24 @@
       </div>
     </div>
     <div class="col-md-7">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-3">
-              <h4> Company name </h4>
-
-              <p>Kingsly </p>
-
-            </div>
-            <div class="col-md-3">
-              <h4> Date & Time </h4> 
-              <p>2020/09/15 10:14:00 PM</p>
-            </div>
-            <div class="col-md-2">
-              <h4> Qty(Ton)</h4>
-              <p>120</p>
-            </div>
-            <div class="col-md-4">
-              <h4> Actions </h4>
-              <div class="row">
-              <div class="col-md-6">
-                <button class="btn btn-lg btn-outline-success"> CONFIRM </button>
-              </div>
-              <div class="col-md-6">
-                <button class="btn btn-lg btn-outline-warning"> REJECT </button>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <table class="table table-striped">  
+        <thead>
+          <tr> 
+            <th scope="col">#</th>
+            <th scope="col">Booking Id</th>
+            <th scope="col">Booking Date</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of bookingData; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{booking.bookingId}} </td>
+            <td> {{booking.bookingDate}} </td>
+            <td> {{booking.qty}} </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

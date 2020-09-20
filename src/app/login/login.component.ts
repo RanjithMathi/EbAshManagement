@@ -21,13 +21,34 @@ export class LoginComponent implements OnInit {
   isOTPGenerated: boolean;
   public userType: string;
   userModel = new User();
+  availableCount:any;
 
   constructor(private modalService: NgbModal, private router: Router, private ajaxService: AjaxService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.plants = [{ name: "NCTPS Stage I", qty: "10000 MT" }, { name: "NCTPS Stage II", qty: "*000 MT" }, { name: "NCTPS I", qty: "60000 MT" }];
+
+    // this.plants = [{ name: "NCTPS Stage I", qty: "10000 MT" }, { name: "NCTPS Stage II", qty: "*000 MT" }, { name: "NCTPS I", qty: "60000 MT" }];
     this.currentDate = new Date();
+
+    this.ajaxService.getMethod("allAvailable").subscribe(
+      data=>{
+        this.plants = Object.values(data);
+      
+      },error=>{
+      
+      }
+          )
+
+          this.ajaxService.getMethod("getVailableCount").subscribe(
+            data=>{
+            this.ajaxService.availSerCount = data;
+            },error=>{
+            
+            }
+                )
+
+          
   }
 
   registerPaidUser() {
@@ -41,13 +62,12 @@ export class LoginComponent implements OnInit {
     console.log("usermodel : ", this.userModel);
     this.ajaxService.postMethod("userRegister", this.userModel).subscribe(
       data => {
-        console.log("data : n", data);
         if(data[0].toString() === 'user registered successfully'){
           this.toastr.success(data[0].toString(),"success");
           this.isOTPGenerated = false;
           this.modalService.open(this.loginModalOpen);
         }else if(data[0].toString() === 'Please provide unique email'){
-          this.toastr.error(data[0].toString(),"error")
+          this.toastr.error(data[0].toString(),"error");
         }else{
           this.toastr.error(data[0].toString(),"error")
         }
@@ -70,9 +90,9 @@ export class LoginComponent implements OnInit {
     console.log("login usermodel : ", this.userModel);
     this.ajaxService.postMethod("loginUser", this.userModel).subscribe(
       data => {
-        console.log("data : ", data);
         this.ajaxService.authenticated = data.toString() ? true : false;
         if (data) {
+          this.ajaxService.updEmail = this.userModel.email;
           this.modalService.dismissAll();
           if (this.userType === "paid") {
             this.router.navigate(['/paid-customer']);
@@ -81,6 +101,9 @@ export class LoginComponent implements OnInit {
           } else if (this.userType === "admin") {
             this.router.navigate(['/admin']);
           }
+        }
+        else{
+          this.toastr.error("Email and password incorrect","error");
         }
 
       }, error => {
@@ -151,7 +174,7 @@ export class User {
   public id: number;
   public userName: String;
   public password: String;
-  public email: String;
+  public email: string;
   public phone: String;
   public role: String;
 }

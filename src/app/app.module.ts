@@ -16,6 +16,9 @@ import { LoginComponent } from './login/login.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { AuthGuard } from './guards/auth-guard.service';
 import { ToastrModule } from 'ngx-toastr';
+import { BookingAfterComponent } from './booking-after/booking-after.component';
+import { InvoicePdfComponent } from './invoice-pdf/invoice-pdf.component';
+import { ReportComponent } from './report/report.component';
  
 @NgModule({
   imports: [
@@ -38,7 +41,10 @@ import { ToastrModule } from 'ngx-toastr';
     PaidCustomerComponent,
     FreeCustomerComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    BookingAfterComponent,
+    InvoicePdfComponent,
+    ReportComponent
   ],
   providers: [AjaxService,AuthGuard],
   bootstrap: [AppComponent]

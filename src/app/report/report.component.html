@@ -1,0 +1,46 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container" style="background-color: #51d69e !important;">
+  <div class="p-1 text-center">
+    <h3>TANGEDCO</h3>
+    <p>FLY ASH FLEET MANAGEMENT</p>
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body p-0">
+                    <div class="row p-5">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Booking ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Booking Date</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Quantity</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Unit Cost</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr  *ngFor="let invoiceDat of invoiceData">
+                                        <td>{{invoiceDat.bookingId}}</td>
+                                        <td>{{invoiceDat.bookingDate}}</td>
+                                        <td>{{invoiceDat.qty}}</td>
+                                        <td *ngIf="url != 'bookingByIdMonthFree'">Rs.1000</td>
+                                        <td *ngIf="url != 'bookingByIdMonthFree'" >Rs.{{invoiceDat.qty * 10000}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</div>

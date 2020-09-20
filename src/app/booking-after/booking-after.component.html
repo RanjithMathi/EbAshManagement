@@ -1,0 +1,68 @@
+<div class="container" style="background-color: #51d69e !important;">
+  <div class="p-1 text-center">
+    <h3>TANGEDCO</h3>
+    <p>FLY ASH FLEET MANAGEMENT</p>
+  </div>
+</div>
+<div class="container" style="font-size: 12px;margin-top: 20px">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Booking Details</h5>
+
+            </div>
+
+            <div class="col-md-12"  *ngFor="let booking of bookingData">
+              <h5>Booking Id: {{booking.bookingId}}</h5>
+              <ul class="list-group"> 
+                <li class="list-group-item">{{booking.bookingDate}} </li>
+                <li class="list-group-item">{{booking.bookingTimeFrom}}</li>
+                <li class="list-group-item">{{booking.bookingTimeTo}}</li>
+                <li class="list-group-item">{{booking.qty}}</li>
+              </ul>
+            </div>
+
+            <!-- <div class="col-4">
+              <div class="md-1 p-1">Name of Company</div>
+              <div class="md-1 p-1">Company Address </div>
+              <div class="md-1 p-1">GST NUmber </div>
+              <div class="md-1 p-1">Contact NUmber </div>
+              <div class="md-1 p-1">Email Id </div>
+            </div> -->
+            <!-- <div class="col-8">
+              <div class="md-1 p-1">Kingsly</div>
+              <div class="md-1 p-1" style="white-space: normal;"> xxx,xxxyyyy,zzzzzxxxxyyyy,tyyyy,3456778877</div>
+              <div class="md-1 p-1">67688787787868686868 </div>
+              <div class="md-1 p-1">+91 7897778907 </div>
+              <div class="md-1 p-1">
+                mranjith2016@gmail.com </div>
+            </div> -->
+          </div>
+          <!-- <div class="row">
+            <div class="col-md-12">
+              <h5>Paid Customer Details</h5>
+            </div>
+            <div class="col-4">
+              <div class="md-1 p-1">Name of Company</div>
+              <div class="md-1 p-1">Company Address </div>
+              <div class="md-1 p-1">GST NUmber </div>
+              <div class="md-1 p-1">Contact NUmber </div>
+              <div class="md-1 p-1">Email Id </div>
+            </div>
+            <div class="col-8">
+              <div class="md-1 p-1">Kingsly</div>
+              <div class="md-1 p-1" style="white-space: normal;"> xxx,xxxyyyy,zzzzzxxxxyyyy,tyyyy,3456778877</div>
+              <div class="md-1 p-1">67688787787868686868 </div>
+              <div class="md-1 p-1">+91 7897778907 </div>
+              <div class="md-1 p-1">
+                mranjith2016@gmail.com </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

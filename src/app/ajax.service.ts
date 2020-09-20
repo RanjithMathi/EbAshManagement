@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpParams } from '@angular/common/http';
 import { environment } from './../environments/environment';
 import { User } from './login/login.component';
 
@@ -8,13 +8,21 @@ import { User } from './login/login.component';
 })
 export class AjaxService {
 
+  public updEmail = "";
+  public availSerCount: any ="";
+
   authenticated:boolean= false;
 
   public baseUrl = environment.baseUrl;
   constructor(private http: HttpClient) { }
   
-  postMethod(url:string,data: User){
+  postMethod(url:string,data: Object){
     return this.http.post(this.baseUrl + url, data);
   }
+
+  getMethod(url:string){
+    return this.http.get(this.baseUrl + url);
+  }
+
 
 }
