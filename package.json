@@ -28,7 +28,7 @@
     "core-js": "2.6.4",
     "ng-pick-datetime": "^5.2.6",
     "ngx-bootstrap": "^5.5.0",
-    "ngx-bootstrap-datetime-popup": "^5.0.2",
+    "ngx-bootstrap-datetime-popup": "^5.1.0",
     "ngx-captcha": "^8.0.1",
     "ngx-clipboard": "11.1.9",
     "ngx-toastr": "^9.1.2",
@@ -38,7 +38,7 @@
     "zone.js": "0.8.29"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.13.1",
+    "@angular-devkit/build-angular": "15.0.4",
     "@angular/cli": "7.3.1",
     "@angular/compiler-cli": "7.2.4",
     "@angular/language-service": "7.2.4",
